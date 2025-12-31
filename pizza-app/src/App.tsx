@@ -1,34 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { usePizzaStore } from './pizzaStore'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const pizzas = usePizzaStore((state) => state.pizzas);
+  const createPizza = usePizzaStore((state) => state.createPizza);
+  const updatePizza = usePizzaStore((state) => state.updatePizza);
+  const deletePizza = usePizzaStore((state) => state.deletePizza);
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-red-500'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      {pizzas.map((pizza)=>{
+        return <div key={pizza.id}>{pizza.name}</div>
+      })}
+      <button onClick={()=>{
+        createPizza({
+          id: Date.now(),
+          name: 'Margherita',
+          size: 'medium',
+          pastry: 'traditional',
+          live_price: 8.99,
+          ingredients: ['tomato', 'mozzarella', 'basil'],
+        });
+      }}>Create Pizza</button>
+      <br/>
+      <button onClick={()=>{
+        if(pizzas.length > 0){
+          const pizzaToUpdate = {...pizzas[0], name: 'Updated Pizza Name'};
+          updatePizza(pizzaToUpdate);
+        }
+      }}>Update Pizza</button>
+      <br/>
+      <button onClick={()=>{
+        if(pizzas.length > 0){
+          deletePizza(pizzas[0]);
+        }
+      }}>Delete Pizza</button>
+  </>
   )
 }
 
