@@ -1,5 +1,17 @@
-@import "tailwindcss";
+@reference "tailwindcss";
+@import "tailwindcss/preflight";
+
+@tailwind utilities;
+
 body {
-    margin: 0;
-    padding: 0;
+  @apply m-0 p-0 box-border;
+  font-family: 'Roboto', sans-serif;
+}
+@layer components {
+  .header {
+    @apply bg-[rgb(55,65,81)] h-[56px] w-full flex justify-center items-center;
+  }
+  .header__container {
+    @apply w-[1600px] flex flex-row justify-between items-center h-full;
+  }
 }
