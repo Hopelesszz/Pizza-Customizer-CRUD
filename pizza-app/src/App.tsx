@@ -1,40 +1,10 @@
-import { useState } from 'react'
-import { usePizzaStore } from './pizzaStore'
+import Home from "./components/Home/Home";
 
 function App() {
-  const pizzas = usePizzaStore((state) => state.pizzas);
-  const createPizza = usePizzaStore((state) => state.createPizza);
-  const updatePizza = usePizzaStore((state) => state.updatePizza);
-  const deletePizza = usePizzaStore((state) => state.deletePizza);
   return (
     <>
-      {pizzas.map((pizza)=>{
-        return <div key={pizza.id}>{pizza.name}</div>
-      })}
-      <button onClick={()=>{
-        createPizza({
-          id: Date.now(),
-          name: 'Margherita',
-          size: 'medium',
-          pastry: 'traditional',
-          live_price: 8.99,
-          ingredients: ['tomato', 'mozzarella', 'basil'],
-        });
-      }}>Create Pizza</button>
-      <br/>
-      <button onClick={()=>{
-        if(pizzas.length > 0){
-          const pizzaToUpdate = {...pizzas[0], name: 'Updated Pizza Name'};
-          updatePizza(pizzaToUpdate);
-        }
-      }}>Update Pizza</button>
-      <br/>
-      <button onClick={()=>{
-        if(pizzas.length > 0){
-          deletePizza(pizzas[0]);
-        }
-      }}>Delete Pizza</button>
-  </>
+      <Home />
+    </>
   )
 }
 
