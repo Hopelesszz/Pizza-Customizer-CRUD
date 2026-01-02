@@ -1,5 +1,8 @@
 export type PizzaSize = "small" | "medium" | "large";
-export type PastryType = 'thin' | 'traditional';
+export type PastryType = {
+    type: 'thin' | 'traditional';
+    price: 2 | 2.5;
+}
 export type Topping = {
     id:number;
     name:string;

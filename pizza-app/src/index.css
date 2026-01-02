@@ -5,13 +5,25 @@
 
 body {
   @apply m-0 p-0 box-border;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter';
 }
 @layer components {
   .header {
     @apply bg-[rgb(55,65,81)] h-[56px] w-full flex justify-center items-center;
   }
   .header__container {
-    @apply w-[1600px] flex flex-row justify-between items-center h-full;
+    @apply max-w-[1600px] w-full flex flex-row justify-between items-center h-full;
+  }
+  .main {
+    @apply bg-[rgb(225,225,225)] h-screen w-full flex justify-center items-center;
+  }
+  .main__container {
+    @apply max-w-[1600px] w-full flex flex-col justify-between items-center h-full;
+  }
+  .pizza__container {
+    @apply w-[85vw] h-[full] flex flex-col gap-[15px];
+  }
+  .pizza__container__content {
+    @apply w-[85vw] h-full flex flex-row justify-between flex-wrap;
   }
 }
