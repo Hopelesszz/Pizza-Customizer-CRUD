@@ -4,7 +4,6 @@ export type PastryType = {
     price: 2 | 2.5;
 }
 export type Topping = {
-    id:number;
     name:string;
     price:number;
     category: 'cheese' | 'meat' | 'veggie' | 'sauce'

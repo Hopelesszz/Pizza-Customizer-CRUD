@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon } from '@fortawesome/free-solid-svg-icons/faMoon';
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons/faPizzaSlice';
 import ToggleIcon from '../elements/ToggleIcon';
 import AddPizzaButton from '../elements/AddPizzaButton';

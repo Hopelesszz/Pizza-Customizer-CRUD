@@ -24,6 +24,9 @@ body {
     @apply w-[85vw] h-[full] flex flex-col gap-[15px];
   }
   .pizza__container__content {
-    @apply w-[85vw] h-full flex flex-row justify-between flex-wrap;
+    @apply w-[85vw] h-full flex flex-row gap-[50px] flex-wrap;
+  }
+  .pizza__container__content__card {
+    @apply bg-white w-[500px] h-[400px] rounded-[8px] p-[15px] flex flex-col gap-[10px];
   }
 }
