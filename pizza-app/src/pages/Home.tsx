@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Header/>
-      <main className='main'>
+      <main className='main pb-[40px]'>
         <div className='main__container'>
           <PizzaContainer/>
         </div>

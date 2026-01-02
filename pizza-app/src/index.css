@@ -15,7 +15,7 @@ body {
     @apply max-w-[1600px] w-full flex flex-row justify-between items-center h-full;
   }
   .main {
-    @apply bg-[rgb(225,225,225)] h-screen w-full flex justify-center items-center;
+    @apply bg-[rgb(225,225,225)] min-h-screen w-full flex justify-center;
   }
   .main__container {
     @apply max-w-[1600px] w-full flex flex-col justify-between items-center h-full;
@@ -27,6 +27,6 @@ body {
     @apply w-[85vw] h-full flex flex-row gap-[50px] flex-wrap;
   }
   .pizza__container__content__card {
-    @apply bg-white w-[500px] h-[400px] rounded-[8px] p-[15px] flex flex-col gap-[10px];
+    @apply bg-white w-[500px] h-[440px] rounded-[8px] p-[15px] flex flex-col gap-[10px];
   }
 }
