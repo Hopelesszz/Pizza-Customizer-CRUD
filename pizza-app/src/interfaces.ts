@@ -1,14 +1,17 @@
-export type PizzaSize = "small" | "medium" | "large";
-export type PastryType = {
+export interface PizzaSize {
+    size: "small" | "medium" | "large";
+    price: 8 | 10 | 12;
+}
+export interface PastryType {
     type: 'thin' | 'traditional';
     price: 2 | 2.5;
 }
-export type Topping = {
-    name:string;
-    price:number;
+export interface Topping {
+    name: string;
+    price: 0.4 | 1 | 0.5 | 0.3;
     category: 'cheese' | 'meat' | 'veggie' | 'sauce'
 }
-export type Pizza = {
+export interface Pizza {
     id:number;
     name:string;
     size:PizzaSize;
@@ -16,13 +19,13 @@ export type Pizza = {
     live_price:number;
     ingredients:Topping[];
 }
-export type PizzaStore = {
+export interface PizzaStore { 
     pizzas: Pizza[];
     createPizza: (obj:Pizza) => void;
     updatePizza: (obj:Pizza) => void;
     deletePizza: (obj:Pizza) => void;
 }
-export type ThemeStore = {
+export interface ThemeStore {
     darkMode: "dark" | "light";
     toggleDarkMode: () => void;
 }

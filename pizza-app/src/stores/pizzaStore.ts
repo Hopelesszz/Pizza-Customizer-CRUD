@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { PizzaStore } from "../types";
+import type { PizzaStore } from "../interfaces";
 export const usePizzaStore = create<PizzaStore>((set)=> ({
     pizzas: [],
     createPizza: (obj) => {

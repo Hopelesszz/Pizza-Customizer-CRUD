@@ -20,13 +20,13 @@ body {
   .main__container {
     @apply max-w-[1600px] w-full flex flex-col justify-between items-center h-full;
   }
-  .pizza__container {
-    @apply w-[85vw] h-[full] flex flex-col gap-[15px];
+  .content__container {
+    @apply w-[80vw] h-[full] flex flex-col gap-[15px];
   }
-  .pizza__container__content {
-    @apply w-[85vw] h-full flex flex-row gap-[50px] flex-wrap;
+  .content__container__pizza {
+    @apply w-[80vw] h-full flex flex-row gap-[50px] flex-wrap;
   }
-  .pizza__container__content__card {
-    @apply bg-white w-[500px] h-[440px] rounded-[8px] p-[15px] flex flex-col gap-[10px];
+  .content__container__pizza__card {
+    @apply bg-white w-[500px] h-fit rounded-[8px] p-[15px] flex flex-col gap-[10px];
   }
 }

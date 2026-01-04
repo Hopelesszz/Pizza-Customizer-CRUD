@@ -36,3 +36,158 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
   const createPizza = usePizzaStore((state) => state.createPizza);
   const updatePizza = usePizzaStore((state) => state.updatePizza);
   const deletePizza = usePizzaStore((state) => state.deletePizza);
+
+
+    const createPizza = usePizzaStore((state) => state.createPizza);
+
+import type { PastryType,Topping } from "../interfaces";
+
+         const pastry: PastryType = { type: 'traditional', price: 2 };
+        const ingredients: Topping[] = [
+            { name: 'tomato sauce', price: 0.5, category: 'sauce' },
+            { name: 'mozzarella', price: 1.0, category: 'cheese' },
+            { name: 'basil', price: 0.3, category: 'veggie' }
+        ];
+        createPizza({
+            id: Math.floor(Math.random() * 100) + 1,
+            name: 'Margherita',
+            size: 'medium',
+            pastry: pastry,
+            live_price: pastry.price + ingredients.reduce((sum:number, topping:{price: number}) => sum + topping.price, 0),
+            ingredients: ingredients
+        }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <form className="flex flex-col gap-[15px] w-[580px] border border-gray-700 rounded-[8px] p-[20px] mt-[13px]">
+                <label htmlFor="name" className="text-gray-700 font-[500] text-[20px] w-[400px]">Name</label>
+                <input type="text" id="name" placeholder=" Name" className="w-[400px] h-[40px] border border-gray-600 rounded-[8px] p-[10px] text-[18px]" />
+                <div className="flex flex-col">
+                    <h3 className="text-gray-700 font-[500] text-[20px] mb-2">Pastry</h3>
+                    <div className="flex flex-col gap-2">
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                            <input type="radio" name="pastry"/>
+                            Small
+                        </label>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                            <input type="radio" name="pastry"/>
+                            Medium
+                        </label>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                            <input type="radio" name="pastry"/>
+                            Large
+                        </label>
+                    </div>
+                </div>
+                <div className="flex flex-col">
+                    <h3 className="text-gray-700 font-[500] text-[20px] mb-2">Size</h3>
+                    <div className="flex flex-col gap-2">
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                            <input type="radio" name="size"/>
+                            Thin
+                        </label>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                            <input type="radio" name="size"/>
+                            Traditional
+                        </label>
+                    </div>
+                </div>
+                <span className="text-gray-700 font-[500] text-[20px] w-[400px]">Ingredients</span>
+                <div className="flex flex-row w-[530px] justify-between">
+                    <div className="flex flex-col">
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2">Cheeses</h3>
+                        <div className="flex flex-col gap-2">
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="cheeses"/>
+                                Mozzarella
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="cheeses"/>
+                                Cheddar
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="cheeses"/>
+                                Parmesan
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="cheeses"/>
+                                Blue Cheese
+                            </label>
+                        </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2">Meats</h3>
+                        <div className="flex flex-col gap-2">
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="meats"/>
+                                Pepperoni
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="meats"/>
+                                Bacon
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="meats"/>
+                                Ham
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="meats"/>
+                                Chicken
+                            </label>
+                        </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2">Vegetables</h3>
+                        <div className="flex flex-col gap-2">
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="vegetables"/>
+                                Tomato
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="vegetables"/>
+                                Mushrooms
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="vegetables"/>
+                                Olives
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="vegetables"/>
+                                Bell Pepper
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="vegetables"/>
+                                Onion
+                            </label>
+                        </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2">Sauces</h3>
+                        <div className="flex flex-col gap-2">
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="sauces"/>
+                                Tomato Sauce
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="sauces"/>
+                                BBQ Sauce
+                            </label>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer">
+                                <input type="checkbox" name="sauces"/>
+                                Garlic Sauce
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <AddPizzaButton click={addPizza}/>
+            </form>       
