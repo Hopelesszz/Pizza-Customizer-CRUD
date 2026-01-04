@@ -21,10 +21,10 @@ body {
     @apply max-w-[1600px] w-full flex flex-col justify-between items-center h-full;
   }
   .content__container {
-    @apply w-[80vw] h-[full] flex flex-col gap-[15px];
+    @apply w-[83vw] h-[full] flex flex-col gap-[15px];
   }
   .content__container__pizza {
-    @apply w-[80vw] h-full flex flex-row gap-[50px] flex-wrap;
+    @apply w-[83vw] h-full flex flex-row gap-[45px] flex-wrap;
   }
   .content__container__pizza__card {
     @apply bg-white w-[500px] h-fit rounded-[8px] p-[15px] flex flex-col gap-[10px];

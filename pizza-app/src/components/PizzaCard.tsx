@@ -1,8 +1,13 @@
-import AddButton from "../elements/DeleteButton";
+import DeleteButton from "../elements/DeleteButton";
 import EditButton from "../elements/EditButton";
 import type { Pizza } from "../interfaces";
+import { usePizzaStore } from "../stores/pizzaStore";
 
 const PizzaCard:React.FC<{pizza: Pizza[]}> = ({pizza}) => {
+    const deletePizza = usePizzaStore((state) => state.deletePizza);
+    const deletePizzaClick: (obj: Pizza) => void = (obj) => {
+        deletePizza(obj);
+    }
     return (
         <>
             {pizza.map(element=> (
@@ -21,7 +26,7 @@ const PizzaCard:React.FC<{pizza: Pizza[]}> = ({pizza}) => {
                     <div className='border-b border-gray-300 h-px w-full'></div>
                     <div className='flex flex-row mt-[10px] mb-[10px] gap-[10px]'>
                         <EditButton pizzaToEdit={element}/>
-                        <AddButton/>
+                        <DeleteButton click={() => deletePizzaClick(element)} />
                     </div>
                 </div>
             ))}
