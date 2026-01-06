@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import type { Pizza } from "../interfaces";
 import Header from '../components/Header';
-import EditForm from "../components/EditOrAddForm";
+import EditOrAddForm from "../components/EditOrAddForm";
 import { useThemeStore } from "../stores/ThemeStore";
 
 const EditPizza = () => {
@@ -14,7 +14,7 @@ const EditPizza = () => {
             <Header/>
             <main className={`main pb-[40px] ${theme === "dark" ? "dark" : ""} dark:bg-zinc-800`}>
                 <div className='main__container'>
-                    <EditForm pizzaToEdit={pizzaToEdit} />
+                    <EditOrAddForm pizzaToEdit={pizzaToEdit} />
                 </div>
             </main>
         </>
