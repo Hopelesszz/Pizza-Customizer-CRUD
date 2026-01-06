@@ -29,3 +29,4 @@ export interface ThemeStore {
     theme: "dark" | "light";
     toggleTheme: () => void;
 }
+export type Theme = "dark" | "light";

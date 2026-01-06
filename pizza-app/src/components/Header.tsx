@@ -1,16 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons/faPizzaSlice';
 import ToggleIcon from '../elements/ToggleIcon';
-import AddPizzaButton from '../elements/AddPizzaButton';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const navigate = useNavigate();
-
-  const handleAddPizza = () => {
-    navigate('/add-pizza');
-  }
   return (
     <header className="header">
       <div className="header__container">
@@ -21,7 +14,6 @@ const Header = () => {
           </span>
         </Link>
         <span className='flex gap-[30px] items-center mr-[30px]'>
-          <AddPizzaButton click={handleAddPizza}/>
           <ToggleIcon/>
         </span>
       </div>

@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import type { Pizza } from "../interfaces";
 import Header from '../components/Header';
-import EditForm from "../components/EditForm";
+import EditForm from "../components/EditOrAddForm";
 import { useThemeStore } from "../stores/ThemeStore";
 
 const EditPizza = () => {

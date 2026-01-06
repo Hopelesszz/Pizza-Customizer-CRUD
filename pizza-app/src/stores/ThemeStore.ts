@@ -1,11 +1,13 @@
 import { create } from "zustand";
-import type { ThemeStore } from "../interfaces";
+import type { Theme, ThemeStore } from "../interfaces";
 
-export const useThemeStore = create<ThemeStore>((set) => ({
-    theme: "light",
+export const useThemeStore = create<ThemeStore>((set,get) => ({
+    theme: localStorage.getItem("theme") as Theme || "light",
     toggleTheme: () => {
-        set((state) => ({
-            theme: state.theme === "light" ? "dark" : "light",
-        }));
-    }   
+        const currentTheme = get().theme;
+        const nextTheme = currentTheme === "light" ? "dark" : "light";
+
+        set({ theme: nextTheme });
+        localStorage.setItem("theme", nextTheme);
+    },
 }));

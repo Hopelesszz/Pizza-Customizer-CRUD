@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import AddForm from '../components/AddForm';
+import EditOrAddForm from '../components/EditOrAddForm';
 import { useThemeStore } from "../stores/ThemeStore";
 
 
@@ -10,7 +10,7 @@ const AddPizza = () => {
           <Header/>
           <main className={`main pb-[40px] ${theme === "dark" ? "dark" : ""} dark:bg-zinc-800`}>
               <div className='main__container'>
-                <AddForm/>
+                <EditOrAddForm pizzaToEdit={null}/>
               </div>
           </main>
         </>
