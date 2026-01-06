@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { PastryType, PizzaSize, Topping } from "../interfaces";
 import { usePizzaStore } from "../stores/pizzaStore";
 import { useNavigate } from 'react-router-dom';
+import { useThemeStore } from "../stores/ThemeStore";
 
 const schema = z.object({
     name: z.string().min(7, "Name is required"),
@@ -15,6 +16,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema> 
 const AddForm = () => {
+    const theme = useThemeStore((state) => state.theme);
     const navigate = useNavigate();
     const pizzas = usePizzaStore((state) => state.pizzas);
     const createPizza = usePizzaStore((state) => state.createPizza);
@@ -89,11 +91,11 @@ const AddForm = () => {
     }
     return (
         <div className="content__container pt-[40px]">
-            <h1 className='text-gray-700 flex w-[80vw] items-center font-[600] text-[34px]'>Add Pizza</h1>
-            <div className='border-b border-gray-700 h-px'></div>
-            <form onSubmit={addForm.handleSubmit(onSubmit)} className="flex flex-col gap-[15px] w-[580px] border border-gray-700 rounded-[8px] p-[20px] mt-[13px]">
-                <label htmlFor="name" className="text-gray-700 font-[500] text-[20px] w-[400px]">Name</label>
-                <input {...addForm.register("name", { required: "Name is required" })} type="text" name="name" placeholder=" Name" className="w-[400px] h-[40px] border border-gray-600 rounded-[8px] p-[10px] text-[18px]" />
+            <h1 className={`${theme === "dark" ? "dark" : ""} text-gray-700 flex w-[80vw] items-center font-[600] text-[34px] dark:text-white`}>Add Pizza</h1>
+            <div className={`${theme === "dark" ? "dark" : ""} border-b border-gray-700 h-px dark:border-white`}></div>
+            <form onSubmit={addForm.handleSubmit(onSubmit)} className={`${theme === "dark" ? "dark" : ""} flex flex-col gap-[15px] w-[580px] border border-gray-700 rounded-[8px] p-[20px] mt-[13px] dark:border-white`}>
+                <label htmlFor="name" className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-[500] text-[20px] w-[400px] dark:text-white`}>Name</label>
+                <input {...addForm.register("name", { required: "Name is required" })} type="text" name="name" placeholder="Name" className={`${theme === "dark" ? "dark" : ""} w-[400px] h-[40px] border border-gray-600 rounded-[8px] p-[10px] text-[18px] dark:border-white dark:text-white`} />
                 {addForm.formState.errors.name && <span className="text-red-500">This field is required</span>}
                 <div className="flex flex-col">
                     <h3 className="text-gray-700 font-[500] text-[20px] mb-2">Size</h3>

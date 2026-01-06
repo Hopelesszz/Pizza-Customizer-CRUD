@@ -26,6 +26,6 @@ export interface PizzaStore {
     deletePizza: (obj:Pizza) => void;
 }
 export interface ThemeStore {
-    darkMode: "dark" | "light";
-    toggleDarkMode: () => void;
+    theme: "dark" | "light";
+    toggleTheme: () => void;
 }

@@ -1,14 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-solid-svg-icons/faMoon';
 import { faSun } from '@fortawesome/free-solid-svg-icons/faSun';
-import { useThemeStore } from '../stores/themeStore';
+import { useThemeStore } from "../stores/ThemeStore";
 
 const ToggleIcon = () => {
-  const toggleDarkMode = useThemeStore((state) => state.toggleDarkMode);
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+
   return (
     <>
-      <FontAwesomeIcon className='text-white size-[25px]' icon={faMoon} />
-      <FontAwesomeIcon className='text-white size-[25px]' icon={faSun} />
+      {theme === "light" ?
+        <FontAwesomeIcon onClick={toggleTheme} className='text-white size-[25px]' icon={faMoon} />
+        :
+        <FontAwesomeIcon onClick={toggleTheme} className='text-white size-[25px]' icon={faSun} />
+      }
     </>
   )
 }
