@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { PastryType, PizzaSize, Topping,Pizza } from "../interfaces";
 import { usePizzaStore } from "../stores/pizzaStore";
 import { useNavigate } from 'react-router-dom';
-import { useThemeStore } from "../stores/ThemeStore";
 import AddPizzaButton from "../elements/AddPizzaButton";
 
 const schema = z.object({
@@ -17,7 +16,6 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema> 
 const EditOrAddForm: React.FC<{ pizzaToEdit: Pizza | null }> = ({ pizzaToEdit }) => {
-    const theme = useThemeStore((state) => state.theme);
     const navigate = useNavigate();
     const pizzas = usePizzaStore((state) => state.pizzas);
     const updatePizza = usePizzaStore((state) => state.updatePizza);
@@ -113,24 +111,24 @@ const EditOrAddForm: React.FC<{ pizzaToEdit: Pizza | null }> = ({ pizzaToEdit })
     }
     return (
         <div className="content__container pt-[40px]">
-            {pizzaToEdit ? <h1 className={`${theme === "dark" ? "dark" : ""} text-gray-700 flex w-[80vw] items-center font-[600] text-[34px] dark:text-white`}>Edit Pizza</h1> : <h1 className={`${theme === "dark" ? "dark" : ""} text-gray-700 flex w-[80vw] items-center font-[600] text-[34px] dark:text-white`}>Add Pizza</h1>}
-            <div className={`${theme === "dark" ? "dark" : ""} border-b border-gray-700 h-px dark:border-white`}></div>
-            <form onSubmit={updateForm.handleSubmit(onSubmit)}  className={`${theme === "dark" ? "dark" : ""} flex flex-col gap-[15px] w-[580px] border border-gray-700 rounded-[8px] p-[20px] mt-[13px] dark:bg-gray-800 dark:border-white`}>
-                <label htmlFor="name" className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-[500] text-[20px] w-[400px] dark:text-white`}>Name</label>
-                <input {...updateForm.register("name", { required: "Name is required" })} type="text" name="name" placeholder=" Name" className={`${theme === "dark" ? "dark" : ""} w-[400px] h-[40px] border border-gray-600 rounded-[8px] p-[10px] text-[18px] dark:border-white dark:text-white`} />
+            {pizzaToEdit ? <h1 className="text-gray-700 flex w-[80vw] items-center font-[600] text-[34px] dark:text-white">Edit Pizza</h1> : <h1 className="text-gray-700 flex w-[80vw] items-center font-[600] text-[34px] dark:text-white">Add Pizza</h1>}
+            <div className="border-b border-gray-700 h-px dark:border-white"></div>
+            <form onSubmit={updateForm.handleSubmit(onSubmit)}  className="flex flex-col gap-[15px] w-[580px] border border-gray-700 rounded-[8px] p-[20px] mt-[13px] dark:bg-gray-800 dark:border-white">
+                <label htmlFor="name" className="text-gray-700 font-[500] text-[20px] w-[400px] dark:text-white">Name</label>
+                <input {...updateForm.register("name", { required: "Name is required" })} type="text" name="name" placeholder=" Name" className="w-[400px] h-[40px] border border-gray-600 rounded-[8px] p-[10px] text-[18px] dark:border-white dark:text-white" />
                 {updateForm.formState.errors.name && <span className="text-red-500">This field is required</span>}
                 <div className="flex flex-col">
-                    <h3 className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-[500] text-[20px] mb-2 dark:text-white`}>Size</h3>
+                    <h3 className="text-gray-700 font-[500] text-[20px] mb-2 dark:text-white">Size</h3>
                     <div className="flex flex-col gap-2">
-                        <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                             <input type="radio" {...updateForm.register("size")} value="small"/>
                             Small
                         </label>
-                        <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                             <input type="radio" {...updateForm.register("size")} value="medium"/>
                             Medium
                         </label>
-                        <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                             <input type="radio" {...updateForm.register("size")} value="large"/>
                             Large
                         </label>
@@ -138,37 +136,37 @@ const EditOrAddForm: React.FC<{ pizzaToEdit: Pizza | null }> = ({ pizzaToEdit })
                 </div>
                 {updateForm.formState.errors.size && <span className="text-red-500">This option is required</span>}
                 <div className="flex flex-col">
-                    <h3 className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-[500] text-[20px] mb-2 dark:text-white`}>Pastry</h3>
+                    <h3 className="text-gray-700 font-[500] text-[20px] mb-2 dark:text-white">Pastry</h3>
                     <div className="flex flex-col gap-2">
-                        <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                             <input type="radio" {...updateForm.register("pastry")} value="thin"/>
                             Thin
                         </label>
-                        <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                        <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                             <input type="radio" {...updateForm.register("pastry")} value="traditional"/>
                             Traditional
                         </label>
                     </div>
                 </div>
                 {updateForm.formState.errors.pastry && <span className="text-red-500">This option is required</span>}
-                <span className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-[500] text-[20px] mb-2 dark:text-white`}>Ingredients</span>
+                <span className="text-gray-700 font-[500] text-[20px] mb-2 dark:text-white">Ingredients</span>
                 <div className="flex flex-row w-[530px] justify-between">
                     <div className="flex flex-col">
-                        <h3 className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-semibold capitalize mb-2 dark:text-white`}>Cheeses</h3>
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2 dark:text-white">Cheeses</h3>
                         <div className="flex flex-col gap-2">
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="mozzarella" {...updateForm.register("ingredients")}/>
                                 Mozzarella
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="cheddar" {...updateForm.register("ingredients")}/>
                                 Cheddar
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="parmesan" {...updateForm.register("ingredients")}/>
                                 Parmesan
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="blue cheese" {...updateForm.register("ingredients")}/>
                                 Blue Cheese
                             </label>
@@ -176,21 +174,21 @@ const EditOrAddForm: React.FC<{ pizzaToEdit: Pizza | null }> = ({ pizzaToEdit })
                         {updateForm.formState.errors.ingredients && <span className="text-red-500">This option is required</span>}
                     </div>
                     <div className="flex flex-col">
-                        <h3 className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-semibold capitalize mb-2 dark:text-white`}>Meats</h3>
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2 dark:text-white">Meats</h3>
                         <div className="flex flex-col gap-2">
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="pepperoni" {...updateForm.register("ingredients")}/>
                                 Pepperoni
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="bacon" {...updateForm.register("ingredients")}/>
                                 Bacon
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="ham" {...updateForm.register("ingredients")}/>
                                 Ham
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="chicken" {...updateForm.register("ingredients")}/>
                                 Chicken
                             </label>
@@ -198,25 +196,25 @@ const EditOrAddForm: React.FC<{ pizzaToEdit: Pizza | null }> = ({ pizzaToEdit })
                         {updateForm.formState.errors.ingredients && <span className="text-red-500">This option is required</span>}
                     </div>
                     <div className="flex flex-col">
-                        <h3 className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-semibold capitalize mb-2 dark:text-white`}>Vegetables</h3>
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2 dark:text-white">Vegetables</h3>
                         <div className="flex flex-col gap-2">
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="tomato" {...updateForm.register("ingredients")}/>
                                 Tomato
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="mushrooms" {...updateForm.register("ingredients")}/>
                                 Mushrooms
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="olives" {...updateForm.register("ingredients")}/>
                                 Olives
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="bell pepper" {...updateForm.register("ingredients")}/>
                                 Bell Pepper
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="onion" {...updateForm.register("ingredients")}/>
                                 Onion
                             </label>
@@ -224,17 +222,17 @@ const EditOrAddForm: React.FC<{ pizzaToEdit: Pizza | null }> = ({ pizzaToEdit })
                         {updateForm.formState.errors.ingredients && <span className="text-red-500">This option is required</span>}
                     </div>
                     <div className="flex flex-col">
-                        <h3 className={`${theme === "dark" ? "dark" : ""} text-gray-700 font-semibold capitalize mb-2 dark:text-white`}>Sauces</h3>
+                        <h3 className="text-gray-700 font-semibold capitalize mb-2 dark:text-white">Sauces</h3>
                         <div className="flex flex-col gap-2">
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="tomato sauce" {...updateForm.register("ingredients")}/>
                                 Tomato Sauce
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="bbq sauce" {...updateForm.register("ingredients")}/>
                                 BBQ Sauce
                             </label>
-                            <label className={`${theme === "dark" ? "dark" : ""} flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white`}>
+                            <label className="flex items-center gap-2 text-gray-700 cursor-pointer dark:text-white">
                                 <input type="checkbox" value="garlic sauce" {...updateForm.register("ingredients")}/>
                                 Garlic Sauce
                             </label>
